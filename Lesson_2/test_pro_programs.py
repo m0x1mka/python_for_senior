@@ -1,6 +1,4 @@
-def hide_card(card):
-    card = ''.join(str(card).split())
-    return '*' * 12 + card[12:]
+from datetime import date
 
-
-print(hide_card("9999 9999 9999 9999"))
+creation_date = date.today()
+print(creation_date)
