@@ -12,9 +12,11 @@ data = {'Дима': ('03.11.2021 09:31:18', '03.11.2021 11:41:28'),
         'Саша': ('03.11.2021 04:14:26', '03.11.2021 05:10:58'),
         'Марина': ('05.11.2021 15:21:06', '05.11.2021 18:33:46')}
 
+
 def transform_data(tuple):
     first = datetime.strptime(tuple[0], '%d.%m.%Y %H:%M:%S')
     second = datetime.strptime(tuple[1], '%d.%m.%Y %H:%M:%S')
     return (second - first).seconds
+
 
 print(min(data, key=lambda x: transform_data(data[x])))
