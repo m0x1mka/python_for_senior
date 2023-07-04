@@ -1,20 +1,17 @@
-from datetime import datetime
+from datetime import date, time, datetime
 
-times_of_purchases = [datetime(2017, 10, 1, 12, 23, 25), datetime(2017, 10, 1, 15, 26, 26),
-                      datetime(2017, 10, 1, 15, 42, 57), datetime(2017, 10, 1, 17, 49, 59),
-                      datetime(2017, 10, 2, 6, 37, 10), datetime(2017, 10, 2, 6, 42, 53),
-                      datetime(2017, 10, 2, 8, 56, 45), datetime(2017, 10, 2, 9, 18, 3),
-                      datetime(2017, 10, 2, 12, 23, 48), datetime(2017, 10, 2, 12, 45, 5),
-                      datetime(2017, 10, 2, 12, 48, 8), datetime(2017, 10, 2, 12, 10, 54),
-                      datetime(2017, 10, 2, 19, 18, 10), datetime(2017, 10, 2, 12, 31, 45),
-                      datetime(2017, 10, 3, 20, 57, 10), datetime(2017, 10, 4, 7, 4, 57),
-                      datetime(2017, 10, 4, 7, 13, 31), datetime(2017, 10, 4, 7, 13, 42),
-                      datetime(2017, 10, 4, 7, 21, 54), datetime(2017, 10, 4, 14, 22, 12),
-                      datetime(2017, 10, 4, 14, 50), datetime(2017, 10, 4, 15, 7, 27),
-                      datetime(2017, 10, 4, 12, 44, 49), datetime(2017, 10, 4, 12, 46, 41),
-                      datetime(2017, 10, 4, 16, 32, 33), datetime(2017, 10, 4, 16, 34, 44),
-                      datetime(2017, 10, 4, 16, 46, 59), datetime(2017, 10, 4, 12, 26, 6)]
+dates = [date(1793, 8, 23), date(1410, 3, 11), date(804, 11, 12), date(632, 6, 4),
+         date(295, 1, 23), date(327, 8, 24), date(167, 4, 16), date(229, 1, 24),
+         date(1239, 2, 5), date(1957, 7, 14), date(197, 8, 24), date(479, 9, 6)]
 
-before_12 = [i for i in times_of_purchases if i.hour < 12]
-after_12 = [i for i in times_of_purchases if i.hour > 12]
-print("До полудня" if len(before_12) > len(after_12) else "После полудня")
+times = [time(7, 33, 27), time(21, 2, 10), time(17, 20, 47), time(20, 8, 59),
+         time(12, 42, 56), time(15, 9, 57), time(17, 47, 9), time(9, 40, 2),
+         time(11, 47, 1), time(17, 27, 10), time(17, 55, 40), time(9, 14, 9)]
+
+lst = []
+for i in range(len(dates)):
+    lst.append(datetime.combine(dates[i], times[i]))
+
+lst.sort(key=lambda x: x.second)
+for i in lst:
+    print(i)
