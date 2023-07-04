@@ -1,17 +1,12 @@
-n = int(input())
-current_emails = [input() for _ in range(n)]
-m = int(input())
-new_emails = [input() for _ in range(m)]
-for i in new_emails:
-    if i + "@beegeek.bzz" not in current_emails:
-        i += "@beegeek.bzz"
-        print(i)
-        current_emails.append(i)
-    else:
-        num = 1
-        while True:
-            if f"{i}{str(num)}@beegeek.bzz" not in current_emails: break
-            num += 1
-        i = i + str(num) + "@beegeek.bzz"
-        print(i)
-        current_emails.append(i)
+with open('files.txt', encoding='utf-8') as f:
+    lst = f.readlines()
+    dict_files
+    for i in lst:
+        if i[-3:] not in dict_files.keys():
+            dict_files[i[-3:]] = i
+    print(dict_files)
+
+
+
+
+
