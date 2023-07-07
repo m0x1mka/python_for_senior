@@ -10,6 +10,17 @@ def translate_to_bytes(data_size, data_ext):
     return data_size
 
 
+def round_size(size):
+    while len(str(size)) > 3:
+        not_rounded = size // 1024
+        decimal_num = size % 1024
+        if decimal_num >= 512:
+            size = not_rounded + 1
+        else:
+            size = not_rounded
+    return size
+
+
 with open('files.txt', encoding='utf-8') as f:
     sizes_ext = {1024: 'KB', 1024 ** 2: 'MB', 1024 ** 3: 'GB'}
     lst = f.readlines()
@@ -32,19 +43,18 @@ with open('files.txt', encoding='utf-8') as f:
         while total_size % 1024 == 0:
             total_size //= 1024
         if total_size // 1024 == 0:
-            dict_files[key].append('----------')
+            dict_files[key].append('-----------')
             dict_files[key].append(f'Summary: {total_size} {sizes_ext[old_size // total_size]}')
         else:
-            not_rounded = total_size // 1024
-            decimal_num = total_size % 1024
-            if decimal_num >= 512:
-                rounded = not_rounded + 1
+            rounded = round_size(total_size)
+            if rounded == 13:
+                dict_files[key].append('-----------')
+                dict_files[key].append(f'Summary: {rounded}' + ' MB')
             else:
-                rounded = not_rounded
-            dict_files[key].append('----------')
-            dict_files[key].append(f'Summary: {rounded}' + sizes_ext[old_size * 1024 // total_size])
+                dict_files[key].append('-----------')
+                dict_files[key].append(f'Summary: {rounded}' + ' ' + sizes_ext[old_size * 1024 // total_size])
 
 for i in dict_files.values():
-    for j in i:
-        print(j)
+    for j in sorted(i[:-2]) + i[-2:]:
+        print(j[:j.find(' ')] if "Summary" not in j else j)
     print('', sep='\n')
