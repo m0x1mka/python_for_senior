@@ -8,7 +8,7 @@ with open("4_2_16.csv", encoding="utf-8") as f:
             domains[i[2][i[2].find("@") + 1:]] = 1
         else:
             domains[i[2][i[2].find("@") + 1:]] += 1
-    with open("4_2_16_final", "w", encoding="utf-8", newline="") as fw:
+    with open("4_2_16_answer", "w", encoding="utf-8", newline="") as fw:
         writer = csv.writer(fw)
         writer.writerow(["domain", "count"])
         for i in sorted(sorted(list(domains.items()), key=lambda x: x[0]), key=lambda x: x[1]):
