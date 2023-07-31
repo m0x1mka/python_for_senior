@@ -28,4 +28,3 @@ for i in names.items():
 
 print(*max_district, sep=": ")
 print(*max_names, sep=": ")
-
