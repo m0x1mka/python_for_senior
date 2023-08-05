@@ -1,7 +1,7 @@
 from zipfile import ZipFile
 from datetime import datetime
 
-with ZipFile("4_5_17_data.zip") as zip_data:
+with ZipFile("lesson_data.zip") as zip_data:
     lst = []
     for i in ZipFile.infolist(zip_data):
         a = i.date_time

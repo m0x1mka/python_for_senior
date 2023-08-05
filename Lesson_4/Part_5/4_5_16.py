@@ -1,6 +1,6 @@
 from zipfile import ZipFile
 
-with ZipFile("4_5_16_data.zip") as zip_data:
+with ZipFile("lesson_data.zip") as zip_data:
     sizes = {}
     for i in ZipFile.infolist(zip_data):
         if not i.is_dir():
