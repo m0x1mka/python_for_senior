@@ -9,7 +9,7 @@ with ZipFile("lesson_data.zip") as zip_data:
                 "2021-11-30 14:22:00",
                 "%Y-%m-%d %H:%M:%S"):
             lst.append(i)
-    for i in sorted(lst, key=lambda x: x.filename):
+    for i in sorted(lst, key=lambda x: x.filename[x.filename.index("/")+1:] if "/" in x.filename else x.filename):
         if not i.is_dir():
             ans = i.filename
             print(ans[ans.index("/")+1:] if "/" in ans else ans)
